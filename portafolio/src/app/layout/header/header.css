@@ -5,6 +5,7 @@ nav {
 /* Avoid overriding Tailwind spacing/padding on anchors — keep only non-layout rule */
 nav a {
 	list-style: none;
+	cursor: pointer;
 }
 
 @media (max-width: 640px) {
@@ -25,3 +26,58 @@ nav a {
 	}
 }
 
+/* Estilos base para los links de escritorio */
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9ca3af;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link.active {
+  color: white;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: white;
+}
+
+/* Estilos para los links de móvil */
+.mobile-link {
+  display: block;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #d1d5db;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.mobile-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* Animación suave para el menú */
+#mobile-menu {
+  transition: max-height 0.3s ease-in-out;
+}

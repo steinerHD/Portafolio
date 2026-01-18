@@ -44,4 +44,39 @@ export class Header {
     }
   }
 
+  scrollToSection(sectionId: string, event: Event): void {
+    event.preventDefault();
+    const element = document.getElementById(sectionId);
+
+    if (element) {
+      this.isMobileOpen = false;
+
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const targetScroll = elementPosition + window.pageYOffset - headerOffset;
+      
+      this.smoothScroll(targetScroll, 600); // 600ms de duración
+    }
+  }
+
+  private smoothScroll(targetScroll: number, duration: number): void {
+    const startScroll = window.scrollY;
+    const difference = targetScroll - startScroll;
+    let start: number | null = null;
+
+    const step = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const progress = (timestamp - start) / duration;
+      const easeProgress = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+
+      window.scrollTo(0, startScroll + difference * easeProgress);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }
+
 }

@@ -23,7 +23,3 @@
   from { opacity: 0.2; }
   to   { opacity: 0.4; }
 }
-
-html {
-  scroll-behavior: smooth;
-}

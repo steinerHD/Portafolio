@@ -1,9 +1,10 @@
 <nav
   class="fixed top-0 inset-x-0 z-50
-         bg-linear-to-l from-black via-[#0B0B0F] to-black
          text-white transition"
   [class.border-b]="scrolled"
   [class.border-white/10]="scrolled"
+  [class.bg-black/80]="scrolled"
+  [class.backdrop-blur-md]="scrolled"
 >
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">

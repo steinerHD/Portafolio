@@ -10,7 +10,6 @@ nav a {
 @media (max-width: 640px) {
 	/* Use a semi-transparent background on small screens so the bar isn't a huge black block */
 	nav {
-		background: rgba(0,0,0,0.85) !important;
 		backdrop-filter: blur(6px);
 	}
 
@@ -21,7 +20,6 @@ nav a {
 		left: 0;
 		right: 0;
 		z-index: 40;
-		background: rgba(0,0,0,0.95);
 		-webkit-backdrop-filter: blur(6px);
 		backdrop-filter: blur(6px);
 	}

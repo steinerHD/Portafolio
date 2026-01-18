@@ -1,0 +1,29 @@
+nav {
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Avoid overriding Tailwind spacing/padding on anchors — keep only non-layout rule */
+nav a {
+	list-style: none;
+}
+
+@media (max-width: 640px) {
+	/* Use a semi-transparent background on small screens so the bar isn't a huge black block */
+	nav {
+		background: rgba(0,0,0,0.85) !important;
+		backdrop-filter: blur(6px);
+	}
+
+	/* Mobile menu visuals */
+	#mobile-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 40;
+		background: rgba(0,0,0,0.95);
+		-webkit-backdrop-filter: blur(6px);
+		backdrop-filter: blur(6px);
+	}
+}
+

@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="grid sm:grid-cols-1 lg:grid-cols-2 items-center gap-6 justify-items-center lg:justify-items-start min-h-[70vh]">
+  
+  <div class="px-4 sm:col-span-1 sm:py-20 sm:px-20 md:py-20 lg:pl-60 mb-4 flex flex-col items-center lg:items-start text-center lg:text-left">
+    
+    <div class="space-y-2">
+      <p class="hero-text text-3xl sm:text-5xl md:text-6xl lg:text-8xl tracking-tighter text-white font-bold uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+        {{ line1 }}
+        <span *ngIf="currentLine === 0 || (isTypingComplete && lastIndex === 0)" class="typing-cursor">|</span>
+      </p>
+
+      <p class="hero-text text-2xl sm:text-4xl pb-2 md:text-5xl lg:text-8xl tracking-tighter text-gray-400 font-bold uppercase">
+        {{ line2 }}
+        <span *ngIf="currentLine === 1 || (isTypingComplete && lastIndex === 1)" class="typing-cursor">|</span>
+      </p>
+
+      <p class="hero-text text-2xl sm:text-4xl md:text-5xl lg:text-8xl tracking-tighter text-white font-bold uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+        {{ line3 }}
+        <span *ngIf="currentLine === 2 || (isTypingComplete && lastIndex === 2)" class="typing-cursor">|</span>
+      </p>
+    </div>
+
+    <p class="mt-8 text-gray-500 font-mono text-xs uppercase tracking-[0.5em] animate-pulse">
+      System Ready // Signal Detected
+    </p>
+  </div>
+  
+  <div class="flex justify-center lg:absolute lg:top-40 lg:right-40 mt-10 lg:mt-0">
+    <div class="vinyl-container">
+      <div class="vinyl-arm"></div>
+      <div class="vinyl-lines"></div>
+      <img src="logo.png" 
+           alt="Core Data" 
+           class="image-glow vinyl-rotation w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain">
+    </div>
+  </div>
+</div>

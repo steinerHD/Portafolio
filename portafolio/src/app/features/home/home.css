@@ -1,0 +1,250 @@
+/* Estilo para las letras del Hero */
+.hero-text {
+    line-height: 0.9;
+    /* Evita que el texto salte al escribir */
+    min-height: 1.1em; 
+    transition: all 0.3s ease;
+}
+
+/* Cursor mejorado estilo terminal espacial */
+.typing-cursor {
+    display: inline-block;
+    width: 0.4ch;
+    margin-left: 5px;
+    background-color: #fff;
+    color: transparent;
+    animation: blink 0.8s steps(2, start) infinite;
+    box-shadow: 0 0 10px #fff;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Brillo del Disco unificado con la paleta nueva (más blanco/frío) */
+.image-glow {
+  border-radius: 50%;
+  box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.1), 
+              0 0 60px 10px rgba(255, 255, 255, 0.05); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes blink{
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+	.typing-cursor{
+		width:0.45ch;
+		animation-duration: 0.8s;
+	}
+}
+
+@media (max-width: 380px) {
+	.typing-cursor{
+		width:0.4ch;
+		animation-duration: 0.7s;
+	}
+}
+
+@keyframes float {
+  0%   { transform: translateY(0) rotate(70deg); }
+  50%  { transform: translateY(-10px) rotate(70deg); }
+  100% { transform: translateY(0) rotate(70deg); }
+}
+
+@keyframes flame {
+  0%   { transform: scaleY(1); opacity: 0.9; }
+  50%  { transform: scaleY(1.2); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0.9; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-flame {
+  animation: flame 0.8s ease-in-out infinite;
+}
+
+/* Contenedor principal para posicionar las capas */
+.vinyl-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Capa de las líneas del disco */
+.vinyl-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 10; /* Por encima de la imagen */
+  pointer-events: none; /* Permite hacer click a través de él */
+  
+  /* Crea el efecto de surcos concéntricos */
+  background: radial-gradient(
+    circle,
+    transparent 40%,
+    rgba(0, 0, 0, 0.1) 41%,
+    transparent 42%,
+    rgba(255, 255, 255, 0.05) 43%,
+    transparent 44%,
+    rgba(0, 0, 0, 0.1) 45%,
+    transparent 46%
+  );
+  background-size: 10px 10px; /* Ajusta la densidad de las líneas */
+  
+  /* Un degradado más fino para simular el brillo del plástico */
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 3px,
+    transparent 4px
+  );
+  
+  /* Animación de rotación sincronizada */
+  animation: spin 3s linear infinite;
+}
+
+/* Animación de rotación para la imagen y las líneas */
+.vinyl-rotation {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ajuste a tu clase existente para que no se rompa el círculo */
+.image-glow {
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px rgba(34, 211, 238, 0.3), 
+              0 0 50px 20px rgba(192, 38, 211, 0.2); 
+  /* Eliminamos el transform del hover para que no interfiera con la rotación 
+     o lo aplicamos al contenedor */
+}
+
+.vinyl-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Posicionamiento del brazo */
+.vinyl-arm {
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  width: 120px;
+  height: 10px;
+  background: linear-gradient(to bottom, #888, #444); /* Efecto metálico */
+  border-radius: 5px;
+  z-index: 30; /* Por encima de todo */
+  transform-origin: right center;
+  transform: rotate(-35deg); /* Ángulo de apoyo */
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+/* La cabeza de la aguja (el cabezal) */
+.vinyl-arm::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 25px;
+  height: 20px;
+  background: #222;
+  border-radius: 3px;
+}
+
+/* Soporte circular del brazo */
+.vinyl-arm::after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #666, #111);
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+/* Efecto: Cuando pasas el mouse por el contenedor, el brazo se mueve hacia el disco */
+.vinyl-container:hover .vinyl-arm {
+  transform: rotate(-15deg); /* Se inclina hacia el centro del disco */
+}
+
+/* --- Estilos Base (Escritorio) --- */
+.vinyl-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vinyl-arm {
+  position: absolute;
+  top: -10px;
+  right: -30px;
+  width: 100px; /* Tamaño escritorio */
+  height: 8px;
+  background: linear-gradient(to bottom, #888, #444);
+  border-radius: 5px;
+  z-index: 30;
+  transform-origin: right center;
+  transform: rotate(-35deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* ... (Tus otros estilos de .vinyl-arm::before y ::after se mantienen igual) ... */
+
+/* --- AJUSTES PARA MÓVILES --- */
+@media (max-width: 1024px) {
+  /* En tablets y móviles, el brazo debe ser más pequeño */
+  .vinyl-arm {
+    width: 60px; 
+    height: 5px;
+    right: -15px;
+    top: -5px;
+  }
+  
+  .vinyl-arm::before {
+    width: 15px;
+    height: 12px;
+    top: -3px;
+  }
+
+  .vinyl-arm::after {
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -7px;
+  }
+
+  /* Reducimos el brillo para que no sature la pantalla pequeña */
+  .image-glow {
+    box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.3), 
+                0 0 30px 10px rgba(192, 38, 211, 0.2);
+  }
+}
+
+/* Ajuste específico para que el brazo no se salga de la pantalla en móviles muy estrechos */
+@media (max-width: 480px) {
+    .vinyl-container {
+        scale: 0.9; /* Escalamos todo un poco para asegurar que quepa */
+    }
+}

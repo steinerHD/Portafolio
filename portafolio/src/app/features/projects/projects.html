@@ -1,1 +1,92 @@
-<p>projects works!</p>
+<div class="max-w-7xl px-6 justify-center mx-auto mt-40 relative">
+    <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+            Featured <span class="text-gray-400">Projects</span>
+        </h2>
+        <p class="text-gray-500 mt-4 font-mono uppercase tracking-[0.2em] text-xs">Mission log: Selected works</p>
+    </div>
+
+    <div class="luna-decorativa">
+        <span class="crater-decorativo"></span>
+        <div class="sombra-lunar"></div>
+    </div>
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <div class="project-card group">
+            <div class="image-container" (click)="openImage('gestiondeeventos.png')">
+                <div class="image-overlay"></div>
+                <img src="gestiondeeventos.png" alt="Gestión de Eventos" class="project-img" />
+            </div>
+            <div class="card-content">
+                <h3 class="project-title">Gestión de Eventos Universitarios</h3>
+                <p class="project-description">
+                    Sistema integral para la administración y control de eventos académicos con arquitectura robusta.
+                </p>
+                <div class="tag-container">
+                    <span class="project-tag">Angular</span>
+                    <span class="project-tag">Spring Boot</span>
+                    <span class="project-tag">PostgreSQL</span>
+                </div>
+                <a href="https://github.com/steinerHD/Gestion-de-Eventos-Universitarios" target="_blank" class="project-btn">
+                    <span>View Repository</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card group">
+            <div class="image-container" (click)="openImage('empleados.png')">
+                <div class="image-overlay"></div>
+                <img src="empleados.png" alt="Admin Empleados" class="project-img" />
+            </div>
+            <div class="card-content">
+                <h3 class="project-title">Crud Admin Empleados</h3>
+                <p class="project-description">
+                    Aplicación para la gestión de personal con operaciones CRUD completas y consumo de API.
+                </p>
+                <div class="tag-container">
+                    <span class="project-tag">Angular</span>
+                    <span class="project-tag">API REST</span>
+                    <span class="project-tag">TypeScript</span>
+                </div>
+                <a href="https://github.com/steinerHD/Admin-Empleados" target="_blank" class="project-btn">
+                    <span>View Repository</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card group">
+            <div class="image-container" (click)="openImage('mapa.png')">
+                <div class="image-overlay"></div>
+                <img src="mapa.png" alt="Map App" class="project-img" />
+            </div>
+            <div class="card-content">
+                <h3 class="project-title">App Map</h3>
+                <p class="project-description">
+                    Visualizador de mapas interactivo integrando APIs de geolocalización y marcadores personalizados.
+                </p>
+                <div class="tag-container">
+                    <span class="project-tag">Angular</span>
+                    <span class="project-tag">Maps API</span>
+                    <span class="project-tag">Geolocation</span>
+                </div>
+                <a href="https://github.com/steinerHD/MapApp/tree/master" target="_blank" class="project-btn">
+                    <span>View Repository</span>
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    @if (selectedImage) {
+    <div class="modal-overlay" (click)="closeImage()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <img [src]="selectedImage" class="modal-img" />
+            <button class="modal-close" (click)="closeImage()">&times;</button>
+        </div>
+    </div>
+    }
+</div>

@@ -147,7 +147,7 @@
   position: absolute;
   top: -20px;
   right: -40px;
-  width: 120px;
+  width: 100px;
   height: 10px;
   background: linear-gradient(to bottom, #888, #444); /* Efecto metálico */
   border-radius: 5px;
@@ -200,8 +200,8 @@
   position: absolute;
   top: -10px;
   right: -30px;
-  width: 100px; /* Tamaño escritorio */
-  height: 8px;
+  width: 200px; /* Tamaño escritorio */
+  height: 10px;
   background: linear-gradient(to bottom, #888, #444);
   border-radius: 5px;
   z-index: 30;

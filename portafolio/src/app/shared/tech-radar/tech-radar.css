@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+.tech-radar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tech-radar-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.radar-grid-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1;
+}
+
+.radar-axis-line {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1;
+}
+
+.radar-data-polygon {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: #ffffff;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
+}
+
+.radar-vertex {
+  fill: #ffffff;
+  cursor: pointer;
+  transition: r 0.2s ease;
+}
+
+.radar-cursor {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.radar-cursor.visible {
+  opacity: 1;
+}
+
+.radar-tooltip {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+  font-family: 'Inter', system-ui, sans-serif;
+  pointer-events: none;
+}
+
+/* --- Etiquetas interactivas --- */
+
+.radar-hit-area {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.radar-label-chip {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+  transition: fill 0.25s ease, stroke 0.25s ease;
+  pointer-events: none;
+}
+
+.radar-label {
+  fill: #a1a1aa;
+  font-size: 11px;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: fill 0.25s ease;
+  pointer-events: none;
+}
+
+.radar-label-underline {
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* Estados al hacer hover sobre una etiqueta */
+.radar-label-group.active .radar-label-chip {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.35);
+}
+
+.radar-label-group.active .radar-label {
+  fill: #ffffff;
+  font-weight: 700;
+}
+
+.radar-label-group.active .radar-label-underline {
+  opacity: 1;
+}

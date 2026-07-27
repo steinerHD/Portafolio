@@ -1,4 +1,4 @@
-<div class="tech-radar-wrapper">
+<div class="tech-radar-wrapper" #wrapper>
   <svg
     [attr.viewBox]="'0 0 ' + size + ' ' + size"
     class="tech-radar-svg"
@@ -40,15 +40,13 @@
       [attr.x]="dataPoints[hoveredIndex].x"
       [attr.y]="dataPoints[hoveredIndex].y - 16"
       class="radar-tooltip"
-    >{{ dataPoints[hoveredIndex].label }}: {{ dataPoints[hoveredIndex].value }}%</text>
+    >{{ dataPoints[hoveredIndex].value }}%</text>
 
-    <!-- Cada etiqueta es ahora un "chip" interactivo: fondo + texto + subrayado -->
     <g
       *ngFor="let label of labelPositions; let i = index"
       class="radar-label-group"
       [class.active]="hoveredIndex === i"
     >
-      <!-- Área de hover (invisible, más grande que el texto) -->
       <circle
         [attr.cx]="label.x" [attr.cy]="label.y"
         r="30"
@@ -56,7 +54,6 @@
         (mouseenter)="onHover(i)"
       />
 
-      <!-- Fondo tipo "chip", muy sutil en reposo, se ilumina al hover -->
       <rect
         [attr.x]="label.x - 34" [attr.y]="label.y - 12"
         width="68" height="20" rx="10"
@@ -69,7 +66,6 @@
         text-anchor="middle"
       >{{ label.label }}</text>
 
-      <!-- Línea subrayada que aparece solo al hacer hover -->
       <line
         [attr.x1]="label.x - 20" [attr.x2]="label.x + 20"
         [attr.y1]="label.y + 8" [attr.y2]="label.y + 8"

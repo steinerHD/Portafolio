@@ -24,6 +24,7 @@ export class TechRadar implements AfterViewInit {
 
   @ViewChild('dataPolygon') dataPolygonRef!: ElementRef<SVGPolygonElement>;
   @ViewChild('radarCursor') cursorRef!: ElementRef<SVGCircleElement>;
+  @ViewChild('wrapper') wrapperRef!: ElementRef<HTMLDivElement>;
 
   metrics: TechMetric[] = [
     { key: 'react',      label: 'React',      value: 70 },
@@ -54,6 +55,8 @@ export class TechRadar implements AfterViewInit {
   private cursorPos: PolygonPoint = { x: 0, y: 0 };
   private readonly holdDuration = 1200;
   private readonly travelDuration = 400;
+
+  private started = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -109,16 +112,23 @@ export class TechRadar implements AfterViewInit {
   ngAfterViewInit(): void {
     this.cursorPos = { x: this.center, y: this.center };
     this.updateCursorPosition();
-    this.animateReveal();
   }
 
-  private animateReveal(): void {
+  /** Home lo invoca con la duración total del texto, para que ambos terminen juntos. */
+  start(duration: number): void {
+    if (this.started) return;
+    this.started = true;
+    this.wrapperRef.nativeElement.classList.add('pulse-in');
+    this.animateReveal(duration);
+  }
+
+  private animateReveal(duration: number): void {
     const finalPoints = this.dataPoints;
     const progress = { value: 0 };
 
     animate(progress, {
       value: 1,
-      duration: 1400,
+      duration,
       ease: 'outElastic(1, .6)',
       onUpdate: () => {
         const scaled = finalPoints
@@ -157,7 +167,6 @@ export class TechRadar implements AfterViewInit {
     }, this.holdDuration);
   }
 
-  // Solo mueve el punto blanco. Ya NO decide qué texto mostrar.
   private moveCursorTo(index: number): void {
     if (this.currentAnim) {
       this.currentAnim.cancel();
@@ -193,12 +202,10 @@ export class TechRadar implements AfterViewInit {
     this.cyclePaused = true;
     if (this.cycleTimer) clearTimeout(this.cycleTimer);
 
-    // El texto aparece YA MISMO, sin esperar a que el punto llegue
     this.activeIndex = index;
     this.hoveredIndex = index;
     this.cdr.detectChanges();
 
-    // El punto viaja de fondo, en paralelo, puramente visual
     this.moveCursorTo(index);
   }
 

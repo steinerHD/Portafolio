@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { animate, scrambleText } from 'animejs';
 import { TechRadar } from '../../shared/tech-radar/tech-radar';
 
@@ -10,6 +10,12 @@ import { TechRadar } from '../../shared/tech-radar/tech-radar';
   styleUrls: ['./home.css'],
 })
 export class Home implements AfterViewInit {
+
+  @ViewChild(TechRadar) techRadar!: TechRadar;
+
+  // Duración de cada línea del scramble. Ajustá este número si el radar
+  // termina antes o después del texto al probarlo en el navegador.
+  private readonly lineDuration = 900;
 
   constructor(private el: ElementRef<HTMLElement>) {}
 
@@ -23,8 +29,13 @@ export class Home implements AfterViewInit {
 
     if (systemText) {
       systemText.style.opacity = '0';
-      systemText.classList.remove('animate-pulse'); // por si acaso
+      systemText.classList.remove('animate-pulse');
     }
+
+    const totalDuration = lines.length * this.lineDuration;
+
+    // El radar arranca a la par del texto, no cuando el texto termina.
+    this.techRadar.start(totalDuration);
 
     this.playSequence(lines, systemText);
   }
@@ -34,19 +45,9 @@ export class Home implements AfterViewInit {
       if (index >= lines.length) {
         if (systemText) {
           systemText.style.opacity = '1';
-          systemText.classList.add('animate-pulse'); // recién ahora se le agrega el pulso
+          systemText.classList.add('animate-pulse');
         }
-
-        setTimeout(() => {
-          if (systemText) {
-            systemText.classList.remove('animate-pulse'); // lo quitamos antes de ocultar
-            systemText.style.opacity = '0';
-          }
-          lines.forEach((line, i) => {
-            line.style.opacity = i === 0 ? '1' : '0';
-          });
-          playLine(0);
-        }, 8000);
+        // Sin setTimeout, sin loop. Termina acá.
         return;
       }
 
@@ -60,6 +61,7 @@ export class Home implements AfterViewInit {
           settleRate: 40,
           settleDuration: 250,
         }),
+        duration: this.lineDuration,
         onComplete: () => playLine(index + 1),
       });
     };

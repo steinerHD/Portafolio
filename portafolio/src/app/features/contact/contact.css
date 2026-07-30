@@ -32,3 +32,63 @@
 form {
     animation: fadeInUp 0.8s ease-out forwards;
 }
+
+/* --- Tarjetas de información de contacto --- */
+
+.contact-info-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.contact-info-card:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.contact-icon svg {
+    width: 1.15rem;
+    height: 1.15rem;
+}
+
+.contact-arrow {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a1a1aa;
+    transition: all 0.25s ease;
+    font-size: 0.9rem;
+}
+
+.contact-info-card:hover .contact-arrow {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: rotate(45deg);
+}

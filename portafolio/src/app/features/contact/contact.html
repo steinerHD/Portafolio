@@ -7,46 +7,82 @@
     </div>
 </div>
 
-<div class="max-w-4xl mx-auto px-6 py-24 relative z-10">
-    <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-            Get in <span class="text-gray-400">Touch</span>
-        </h2>
-        <p class="text-gray-500 mt-4 font-mono">Ready for the next mission?</p>
-    </div>
+<div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
 
-    <div class="glass-card overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/40 backdrop-blur-xl p-1">
-        <div class="bg-zinc-950/80 rounded-[calc(1.5rem-1px)] p-8 md:p-12">
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="space-y-2 group">
-                    <label class="text-xs font-mono uppercase tracking-widest text-gray-500 group-focus-within:text-white transition-colors">Commander Name</label>
-                    <input type="text" placeholder="John Doe"
-                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30" />
-                </div>
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
 
-                <div class="space-y-2 group">
-                    <label class="text-xs font-mono uppercase tracking-widest text-gray-500 group-focus-within:text-white transition-colors">Signal Address</label>
-                    <input type="email" placeholder="you@universe.com"
-                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30" />
-                </div>
+        <div>
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono uppercase tracking-widest text-gray-400 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                Contact
+            </span>
 
-                <div class="space-y-2 md:col-span-2 group">
-                    <label class="text-xs font-mono uppercase tracking-widest text-gray-500 group-focus-within:text-white transition-colors">Transmission</label>
-                    <textarea rows="4" placeholder="Type your message..."
-                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30 resize-none"></textarea>
-                </div>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mb-4">
+                Get in <span class="text-gray-400">touch</span>
+            </h2>
 
-                <div class="md:col-span-2 flex justify-end mt-4">
-                    <button type="submit"
-                        class="group relative inline-flex items-center justify-center px-8 py-4 font-mono font-bold text-white transition-all duration-200 bg-white/10 border border-white/20 rounded-full hover:bg-white hover:text-black focus:outline-none">
-                        <span>Launch Message</span>
-                        <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </button>
-                </div>
-            </form>
+            <p class="text-gray-500 mb-10 max-w-sm">
+                Have questions or a project in mind? I'd love to hear from you.
+            </p>
+
+            <div class="space-y-4">
+
+                <a href="mailto:steiner.herrera.mosquera@gmail.com" class="contact-info-card group">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                    </span>
+                    <span class="flex-1 min-w-0">
+                        <span class="block text-white font-medium">Email me</span>
+                        <span class="block text-gray-500 text-sm truncate">steiner.herrera.mosquera@gmail.com</span>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/steiner-herrera-mosquera/" target="_blank" rel="noopener" class="contact-info-card group">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h4v16H4z"/><path d="M8 10c0-2 2-3 4-3s4 1 4 4v9h-4v-8c0-1-1-2-2-2s-2 1-2 2v8H4v-10z"/><circle cx="6" cy="6" r="1"/></svg>
+                    </span>
+                    <span class="flex-1 min-w-0">
+                        <span class="block text-white font-medium">Connect on LinkedIn</span>
+                        <span class="block text-gray-500 text-sm truncate">in/steiner-herrera-mosquera</span>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+
+                <a href="https://github.com/steinerHD" target="_blank" rel="noopener" class="contact-info-card group">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.4c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.4 0C7.1 4 6 4.3 6 4.3a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.6 10.7c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg>
+                    </span>
+                    <span class="flex-1 min-w-0">
+                        <span class="block text-white font-medium">View my work</span>
+                        <span class="block text-gray-500 text-sm truncate">github.com/steinerHD</span>
+                    </span>
+                    <span class="contact-arrow">↗</span>
+                </a>
+
+            </div>
         </div>
+
+        <div class="glass-card overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/40 backdrop-blur-xl p-1">
+            <div class="bg-zinc-950/80 rounded-[calc(1.5rem-1px)] p-8">
+                <form class="space-y-5">
+
+                    <input type="text" placeholder="Name"
+                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30" />
+
+                    <input type="email" placeholder="Email"
+                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30" />
+
+                    <textarea rows="7" placeholder="Message"
+                        class="input-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white outline-none transition-all focus:ring-2 focus:ring-white/20 focus:border-white/30 resize-none"></textarea>
+
+                    <button type="submit"
+                        class="w-full py-4 font-semibold text-black bg-white rounded-xl transition-all duration-200 hover:bg-gray-200">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>

@@ -2,62 +2,40 @@ nav {
 	-webkit-font-smoothing: antialiased;
 }
 
-/* Avoid overriding Tailwind spacing/padding on anchors — keep only non-layout rule */
 nav a {
 	list-style: none;
 	cursor: pointer;
 }
 
-@media (max-width: 640px) {
-	/* Use a semi-transparent background on small screens so the bar isn't a huge black block */
-	nav {
-		backdrop-filter: blur(6px);
-	}
-
-	/* Mobile menu visuals */
-	#mobile-menu {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		right: 0;
-		z-index: 40;
-		-webkit-backdrop-filter: blur(6px);
-		backdrop-filter: blur(6px);
-	}
+/* Glow blanco de la píldora — reemplaza el shadow-black que tenía antes */
+.nav-pill-glow {
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.25), 0 0 4px rgba(255, 255, 255, 0.4);
 }
 
-/* Estilos base para los links de escritorio */
-.nav-link {
+/* Estilos para los links dentro de la píldora de escritorio */
+.nav-pill-link {
   position: relative;
   font-size: 0.875rem;
   font-weight: 500;
   color: #9ca3af;
-  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
   text-decoration: none;
   display: inline-block;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-link:hover {
+.nav-pill-link:hover {
   color: white;
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
-.nav-link.active {
+.nav-pill-link.active {
   color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: white;
-}
-
-/* Estilos para los links de móvil */
+/* Estilos para los links de móvil (dropdown) */
 .mobile-link {
   display: block;
   padding-left: 0.75rem;
@@ -75,9 +53,4 @@ nav a {
 .mobile-link:hover {
   background-color: rgba(255, 255, 255, 0.05);
   color: white;
-}
-
-/* Animación suave para el menú */
-#mobile-menu {
-  transition: max-height 0.3s ease-in-out;
 }

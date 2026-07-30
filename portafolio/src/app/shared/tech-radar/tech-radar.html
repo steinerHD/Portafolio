@@ -1,0 +1,77 @@
+<div class="tech-radar-wrapper" #wrapper>
+  <svg
+    [attr.viewBox]="'0 0 ' + size + ' ' + size"
+    class="tech-radar-svg"
+    (mouseleave)="onSvgLeave()"
+  >
+
+    <polygon
+      *ngFor="let ring of gridRings"
+      [attr.points]="ring"
+      class="radar-grid-ring"
+    />
+
+    <line
+      *ngFor="let line of axisLines"
+      [attr.x1]="line.x1" [attr.y1]="line.y1"
+      [attr.x2]="line.x2" [attr.y2]="line.y2"
+      class="radar-axis-line"
+    />
+
+    <polygon #dataPolygon points="" class="radar-data-polygon" />
+
+    <circle
+      #radarCursor
+      [attr.cx]="center" [attr.cy]="center"
+      r="6"
+      class="radar-cursor"
+      [class.visible]="cursorVisible"
+    />
+
+    <circle
+      *ngFor="let point of dataPoints; let i = index"
+      [attr.cx]="point.x" [attr.cy]="point.y"
+      [attr.r]="hoveredIndex === i ? 6 : 4"
+      class="radar-vertex"
+    />
+
+    <text
+      *ngIf="hoveredIndex !== null"
+      [attr.x]="dataPoints[hoveredIndex].x"
+      [attr.y]="dataPoints[hoveredIndex].y - 16"
+      class="radar-tooltip"
+    >{{ dataPoints[hoveredIndex].value }}%</text>
+
+    <g
+      *ngFor="let label of labelPositions; let i = index"
+      class="radar-label-group"
+      [class.active]="hoveredIndex === i"
+    >
+      <circle
+        [attr.cx]="label.x" [attr.cy]="label.y"
+        r="30"
+        class="radar-hit-area"
+        (mouseenter)="onHover(i)"
+      />
+
+      <rect
+        [attr.x]="label.x - 34" [attr.y]="label.y - 12"
+        width="68" height="20" rx="10"
+        class="radar-label-chip"
+      />
+
+      <text
+        [attr.x]="label.x" [attr.y]="label.y"
+        class="radar-label"
+        text-anchor="middle"
+      >{{ label.label }}</text>
+
+      <line
+        [attr.x1]="label.x - 20" [attr.x2]="label.x + 20"
+        [attr.y1]="label.y + 8" [attr.y2]="label.y + 8"
+        class="radar-label-underline"
+      />
+    </g>
+
+  </svg>
+</div>

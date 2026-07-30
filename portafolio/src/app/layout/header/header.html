@@ -1,49 +1,43 @@
 <nav
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-in-out"
-  [class.py-2]="!scrolled"
-  [class.bg-black/80]="scrolled"
-  [class.backdrop-blur-lg]="scrolled"
-  [class.border-b]="scrolled"
-  [class.border-white/10]="scrolled"
+  class="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center px-4"
 >
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      
-      <div class="flex items-center sm:hidden">
-        <button
-          (click)="toggleMobileMenu()"
-          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/10 hover:text-white focus:outline-none"
-        >
-          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            @if (!isMobileOpen) {
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            } @else {
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-            }
-          </svg>
-        </button>
-      </div>
-
-      <div class="hidden sm:flex flex-1 justify-center">
-        <div class="flex space-x-8">
-          <a href="#home" (click)="activeSection = 'home'" (click)="scrollToSection('home', $event)" class="nav-link" [class.active]="activeSection === 'home'">Home</a>
-          <a href="#about-me" (click)="activeSection = 'about-me'" (click)="scrollToSection('about-me', $event)" class="nav-link" [class.active]="activeSection === 'about-me'">About me</a>
-          <a href="#projects" (click)="activeSection = 'projects'" (click)="scrollToSection('projects', $event)" class="nav-link" [class.active]="activeSection === 'projects'">Projects</a>
-          <a href="#contact" (click)="activeSection = 'contact'" (click)="scrollToSection('contact', $event)" class="nav-link" [class.active]="activeSection === 'contact'">Contact</a>
-        </div>
-      </div>
-    </div>
+  <!-- Píldora desktop -->
+  <div
+    class="hidden sm:flex items-center gap-1 rounded-full bg-black/90 backdrop-blur-lg border border-white/40 nav-pill-glow pl-2 pr-2 py-2 transition-all duration-300"
+  >
+    <a href="#home" (click)="activeSection = 'home'" (click)="scrollToSection('home', $event)" class="nav-pill-link" [class.active]="activeSection === 'home'">Home</a>
+    <a href="#about-me" (click)="activeSection = 'about-me'" (click)="scrollToSection('about-me', $event)" class="nav-pill-link" [class.active]="activeSection === 'about-me'">About me</a>
+    <a href="#projects" (click)="activeSection = 'projects'" (click)="scrollToSection('projects', $event)" class="nav-pill-link" [class.active]="activeSection === 'projects'">Projects</a>
+    <a href="#contact" (click)="activeSection = 'contact'" (click)="scrollToSection('contact', $event)" class="nav-pill-link" [class.active]="activeSection === 'contact'">Contact</a>
   </div>
 
-  <div 
-    class="sm:hidden overflow-hidden transition-all duration-300 ease-in-out bg-black/95 backdrop-blur-xl border-b border-white/10"
-    [style.max-height]="isMobileOpen ? '400px' : '0px'"
-  >
-    <div class="px-4 pt-2 pb-6 space-y-2">
-      <a href="#home" (click)="scrollToSection('home', $event)" (click)="closeMobileMenu()" class="mobile-link">Home</a>
-      <a href="#about-me" (click)="scrollToSection('about-me', $event)" (click)="closeMobileMenu()" class="mobile-link">About Me</a>
-      <a href="#projects" (click)="scrollToSection('projects', $event)" (click)="closeMobileMenu()" class="mobile-link">Projects</a>
-      <a href="#contact" (click)="scrollToSection('contact', $event)" (click)="closeMobileMenu()" class="mobile-link">Contact</a>
-    </div>
+  <!-- Píldora mobile: solo hamburguesa -->
+  <div class="sm:hidden flex items-center justify-end gap-2 rounded-full bg-black/90 backdrop-blur-lg border border-white/40 nav-pill-glow pl-2 pr-2 py-2 w-full max-w-xs">
+    <button
+      (click)="toggleMobileMenu()"
+      class="inline-flex items-center justify-center rounded-full size-9 text-gray-300 hover:bg-white/10 hover:text-white focus:outline-none"
+    >
+      <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        @if (!isMobileOpen) {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        } @else {
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        }
+      </svg>
+    </button>
   </div>
 </nav>
+
+<!-- Dropdown mobile, separado del nav para no romper el z-index de la píldora -->
+<div
+  class="sm:hidden fixed top-20 inset-x-4 z-40 overflow-hidden rounded-2xl bg-black/95 backdrop-blur-xl border border-white/40 nav-pill-glow transition-all duration-300 ease-in-out"
+  [style.max-height]="isMobileOpen ? '400px' : '0px'"
+  [style.opacity]="isMobileOpen ? '1' : '0'"
+>
+  <div class="px-4 pt-2 pb-4 space-y-2">
+    <a href="#home" (click)="scrollToSection('home', $event)" (click)="closeMobileMenu()" class="mobile-link">Home</a>
+    <a href="#about-me" (click)="scrollToSection('about-me', $event)" (click)="closeMobileMenu()" class="mobile-link">About Me</a>
+    <a href="#projects" (click)="scrollToSection('projects', $event)" (click)="closeMobileMenu()" class="mobile-link">Projects</a>
+    <a href="#contact" (click)="scrollToSection('contact', $event)" (click)="closeMobileMenu()" class="mobile-link">Contact</a>
+  </div>
+</div>

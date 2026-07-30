@@ -11,13 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class Header {
 
-  scrolled = false;
   activeSection = 'home';
   isMobileOpen = false;
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    this.scrolled = window.scrollY > 10;
     this.detectActiveSection();
   }
 
@@ -54,8 +52,8 @@ export class Header {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const targetScroll = elementPosition + window.pageYOffset - headerOffset;
-      
-      this.smoothScroll(targetScroll, 600); // 600ms de duración
+
+      this.smoothScroll(targetScroll, 600);
     }
   }
 
@@ -78,5 +76,4 @@ export class Header {
 
     requestAnimationFrame(step);
   }
-
 }
